@@ -6,6 +6,7 @@
 // @author       You
 // @match        http://radiator.app.betfair/dashboard/radiator/EDW%20NJ/
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/moshmage/RadiatorFun/master/radiator-fun.user.js
 // ==/UserScript==
 /* jshint -W097 */
 'use strict';
