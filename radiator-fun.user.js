@@ -99,4 +99,4 @@ findFailTests().forEach(function (node) {
 findSuccessNodes().forEach(function (node) {
   rfun.chuckNorrisSuccess(node);
 });
-}, 2000);
+}, 300);
