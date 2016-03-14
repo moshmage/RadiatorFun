@@ -58,7 +58,6 @@ function findSuccessNodes() {
   var successBox = [];
   [].forEach.call(document.querySelectorAll('.steps'), function (element) {
     node = element.querySelectorAll('.succ-holder');
-    console.log(node.length);
     if (node.length === 4) {
       successBox.push(element);
     }
