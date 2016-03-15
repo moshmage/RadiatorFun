@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Radiator
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.5
 // @description  try to take over the world!
 // @author       You
 // @match        http://radiator.app.betfair/dashboard/radiator/EDW%20NJ/
@@ -14,11 +14,7 @@
 function parentNode(parentsUp, selector, element) {
   var ele, found = false;
   for (parentsUp; parentsUp >= 0; parentsUp--) {
-    if (!ele) {
-      ele = element.parentNode;
-    } else {
-      ele = ele.parentNode;
-    }
+    ele = (ele) ? ele.parentNode : element.parentNode;
     if (ele.className.indexOf(selector) >= 0) {
       found = ele;
     }
@@ -66,6 +62,15 @@ function findSuccessNodes() {
 }
 
 var rfun = {
+  nyan: function (node) {
+    var parent, tests;
+    [].forEach.call(document.querySelectorAll('.header.wip'),function (element) {
+      parent = parentNode(2, 'steps', element);
+      if (parent.querySelector('img') == null) {
+        parent.querySelector('.test .-holder').insertAdjacentHTML('afterbegin','<img src="//media.giphy.com/media/sIIhZliB2McAo/giphy.gif"></img>');
+      }
+    });
+  },
   travolta: function (node) {
     var travoltaExists;
     [].forEach.call(node.querySelectorAll('.test .td.-holder'), function (element) {
@@ -99,4 +104,7 @@ findFailTests().forEach(function (node) {
 findSuccessNodes().forEach(function (node) {
   rfun.chuckNorrisSuccess(node);
 });
+
+rfun.nyan();
+
 }, 300);
